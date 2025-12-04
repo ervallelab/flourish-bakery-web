@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Leaf, Instagram, Facebook, Mail, Phone, MapPin } from "lucide-react";
+import { Instagram, MapPin, MessageCircle } from "lucide-react";
+import logoAvellanas from "@/assets/logo-avellanas.jpeg";
 
 const Footer = () => {
   return (
@@ -8,29 +9,37 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="space-y-4">
-            <Link to="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-full bg-primary-foreground/20 flex items-center justify-center">
-                <Leaf className="w-5 h-5 text-primary-foreground" />
+            <Link to="/" className="flex items-center gap-3">
+              <div className="w-14 h-14 rounded-full overflow-hidden shadow-lg ring-2 ring-primary-foreground/30">
+                <img 
+                  src={logoAvellanas} 
+                  alt="Avellana's Logo" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <span className="font-serif text-2xl font-semibold">Avellana's</span>
             </Link>
             <p className="text-primary-foreground/80 leading-relaxed">
-              Horneando con amor y los mejores ingredientes naturales para tu bienestar.
+              Sana-mente Diferente. Horneando con amor y los mejores ingredientes naturales.
             </p>
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://instagram.com/Avellanas.barras"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://wa.me/573006180880"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors"
-                aria-label="Facebook"
+                aria-label="WhatsApp"
               >
-                <Facebook className="w-5 h-5" />
+                <MessageCircle className="w-5 h-5" />
               </a>
             </div>
           </div>
@@ -83,16 +92,30 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 mt-0.5 flex-shrink-0" />
                 <span className="text-primary-foreground/80">
-                  Ciudad de México, México
+                  Guadalajara de Buga, Valle del Cauca, Colombia
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 flex-shrink-0" />
-                <span className="text-primary-foreground/80">+52 55 1234 5678</span>
+                <MessageCircle className="w-5 h-5 flex-shrink-0" />
+                <a 
+                  href="https://wa.me/573006180880" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                >
+                  WhatsApp 3006180880
+                </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="w-5 h-5 flex-shrink-0" />
-                <span className="text-primary-foreground/80">hola@avellanas.com</span>
+                <Instagram className="w-5 h-5 flex-shrink-0" />
+                <a 
+                  href="https://instagram.com/Avellanas.barras" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                >
+                  @Avellanas.barras
+                </a>
               </li>
             </ul>
           </div>
