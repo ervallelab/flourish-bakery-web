@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Leaf } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logoAvellanas from "@/assets/logo-avellanas.jpeg";
 
 const navLinks = [
   { name: "Inicio", path: "/" },
@@ -20,11 +21,15 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-              <Leaf className="w-5 h-5 text-primary-foreground" />
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className="w-14 h-14 rounded-full overflow-hidden shadow-lg ring-2 ring-primary/30 group-hover:ring-primary/60 group-hover:scale-105 transition-all duration-300">
+              <img 
+                src={logoAvellanas} 
+                alt="Avellana's Logo" 
+                className="w-full h-full object-cover"
+              />
             </div>
-            <span className="font-serif text-2xl font-semibold text-foreground">
+            <span className="font-serif text-2xl font-semibold text-foreground hidden sm:block">
               Avellana's
             </span>
           </Link>
