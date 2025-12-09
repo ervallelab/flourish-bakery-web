@@ -22,7 +22,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-16 h-16 rounded-full overflow-hidden shadow-lg ring-2 ring-primary/30 group-hover:ring-primary/60 group-hover:scale-105 transition-all duration-300">
+            <div className="w-[68px] h-[68px] rounded-full overflow-hidden shadow-lg ring-2 ring-primary/30 group-hover:ring-primary/60 group-hover:scale-105 transition-all duration-300">
               <img 
                 src={logoAvellanas} 
                 alt="Avellana's Logo" 
