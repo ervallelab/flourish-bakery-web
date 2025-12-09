@@ -56,10 +56,6 @@ const CTASection = () => {
             className="mt-12 flex flex-wrap justify-center gap-8 text-muted-foreground"
           >
             <div className="flex items-center gap-2">
-              <span className="text-2xl">🚚</span>
-              <span className="text-sm font-medium">Entrega Gratis +$500</span>
-            </div>
-            <div className="flex items-center gap-2">
               <span className="text-2xl">⏰</span>
               <span className="text-sm font-medium">Horneado Fresco Diario</span>
             </div>
