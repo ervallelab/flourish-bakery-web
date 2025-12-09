@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import heroBarras from "@/assets/hero-barras.jfif";
 
 const HeroSection = () => {
   return (
@@ -33,14 +34,13 @@ const HeroSection = () => {
             </motion.div>
 
             <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-foreground">
-              Panadería
+              Avellana's
               <span className="block text-gradient">Saludable</span>
               <span className="block text-foreground/80">Artesanal</span>
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-lg leading-relaxed">
-              Descubre el sabor auténtico de productos horneados con ingredientes naturales, 
-              sin azúcares refinados y llenos de nutrientes para tu bienestar.
+              En Avellana's, la originalidad se fusiona con el sabor y la salud. Nuestros productos son deliciosos y sanamente diferentes, elaborados con pasión y los mejores ingredientes naturales. Creemos que consentirse puede ser nutritivo.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -65,7 +65,7 @@ const HeroSection = () => {
               {[
                 { number: "100%", label: "Natural" },
                 { number: "0", label: "Azúcar Refinada" },
-                { number: "5+", label: "Años de Experiencia" },
+                { number: "2+", label: "Años de Experiencia" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center">
                   <div className="font-serif text-2xl md:text-3xl font-bold text-primary">
@@ -91,8 +91,8 @@ const HeroSection = () => {
               {/* Image Container */}
               <div className="absolute inset-8 rounded-full overflow-hidden shadow-elevated">
                 <img
-                  src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80"
-                  alt="Pan artesanal saludable"
+                  src={heroBarras}
+                  alt="Barras saludables Avellana's"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -103,8 +103,8 @@ const HeroSection = () => {
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute -top-4 right-8 bg-card rounded-2xl p-4 shadow-medium"
               >
-                <div className="text-2xl">🌾</div>
-                <p className="text-xs font-medium text-foreground mt-1">Sin Gluten</p>
+                <div className="text-2xl">🌿</div>
+                <p className="text-xs font-medium text-foreground mt-1">Natural</p>
               </motion.div>
 
               <motion.div
@@ -112,8 +112,8 @@ const HeroSection = () => {
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
                 className="absolute bottom-8 -left-4 bg-card rounded-2xl p-4 shadow-medium"
               >
-                <div className="text-2xl">🥜</div>
-                <p className="text-xs font-medium text-foreground mt-1">Con Avellanas</p>
+                <div className="text-2xl">🌾</div>
+                <p className="text-xs font-medium text-foreground mt-1">Avena</p>
               </motion.div>
 
               <motion.div
@@ -121,8 +121,8 @@ const HeroSection = () => {
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                 className="absolute bottom-20 right-0 bg-card rounded-2xl p-4 shadow-medium"
               >
-                <div className="text-2xl">🍯</div>
-                <p className="text-xs font-medium text-foreground mt-1">Endulzantes Naturales</p>
+                <div className="text-2xl">⚖️</div>
+                <p className="text-xs font-medium text-foreground mt-1">Equilibrio</p>
               </motion.div>
             </div>
           </motion.div>
