@@ -3,16 +3,17 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ProductCard from "@/components/products/ProductCard";
+import barraAhuyama from "@/assets/barra-ahuyama.jfif";
 
 const featuredProducts = [
   {
     id: 1,
-    name: "Pan de Avellana Integral",
-    description: "Pan artesanal con avellanas tostadas y harina integral",
-    price: 85,
-    image: "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=600&q=80",
+    name: "Barra de Ahuyama",
+    description: "Deliciosa barra con ahuyama y endulzada con stevia",
+    price: 12500,
+    image: barraAhuyama,
     badge: "Más Vendido",
-    tags: ["Sin Azúcar", "Alto en Fibra"],
+    tags: ["Stevia", "Alto en Fibra"],
   },
   {
     id: 2,
