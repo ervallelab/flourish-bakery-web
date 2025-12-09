@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ProductCard from "@/components/products/ProductCard";
 import barraAhuyama from "@/assets/barra-ahuyama.jfif";
+import suavecitaChocolate from "@/assets/suavecita-chocolate.jpeg";
 
 const featuredProducts = [
   {
@@ -17,28 +18,12 @@ const featuredProducts = [
   },
   {
     id: 2,
-    name: "Galletas de Almendra",
-    description: "Crujientes galletas con almendras y miel de abeja",
-    price: 65,
-    image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&q=80",
+    name: "Suavecita de Chocolate",
+    description: "8 porciones $60.000 • 12 porciones $90.000",
+    price: 60000,
+    image: suavecitaChocolate,
     badge: "Nuevo",
-    tags: ["Sin Gluten", "Vegano"],
-  },
-  {
-    id: 3,
-    name: "Brownie de Cacao Puro",
-    description: "Brownie denso con cacao orgánico y nueces",
-    price: 55,
-    image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&q=80",
-    tags: ["Sin Lactosa", "Bajo en Calorías"],
-  },
-  {
-    id: 4,
-    name: "Muffins de Zanahoria",
-    description: "Esponjosos muffins con zanahoria y especias",
-    price: 45,
-    image: "https://images.unsplash.com/photo-1607958996333-41aef7caefaa?w=600&q=80",
-    tags: ["Alto en Fibra", "Sin Azúcar"],
+    tags: ["Equilibrio", "Sin Conservantes"],
   },
 ];
 
