@@ -64,7 +64,7 @@ const HeroSection = () => {
             >
               {[
                 { number: "100%", label: "Natural" },
-                { number: "0", label: "Azúcar Refinada" },
+                { number: "100%", label: "Sabores Reales" },
                 { number: "2+", label: "Años de Experiencia" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center">
