@@ -1,139 +1,129 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import ProductCard from "@/components/products/ProductCard";
-import { Button } from "@/components/ui/button";
 
-const categories = [
-  { id: "all", name: "Todos" },
-  { id: "panes", name: "Panes" },
-  { id: "galletas", name: "Galletas" },
-  { id: "pasteles", name: "Pasteles" },
-  { id: "postres", name: "Postres" },
-];
+// Import images
+import barraAhuyama from "@/assets/barra-ahuyama.jfif";
+import barraZanahoria from "@/assets/barra-zanahoria.jfif";
+import barraChocolate from "@/assets/barra-chocolate.jfif";
+import barraFrutas from "@/assets/barra-frutas.jfif";
+import barraGrandeChocolate from "@/assets/barra-grande-chocolate.jfif";
+import barraGrandeFrutas from "@/assets/barra-grande-frutas.jfif";
+import tortaSuavecitaChocolate from "@/assets/torta-suavecita-chocolate.jfif";
+import tortaVainillaTropic from "@/assets/torta-vainilla-tropic.jpeg";
+import suavecitaNavidad from "@/assets/suavecita-navidad.jpeg";
+import vainillaTropicNavidad from "@/assets/vainilla-tropic-navidad.jpeg";
 
-const allProducts = [
+const barrasSaludables = [
   {
     id: 1,
-    name: "Pan de Avellana Integral",
-    description: "Pan artesanal con avellanas tostadas y harina integral, perfecto para el desayuno",
-    price: 85,
-    image: "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=600&q=80",
-    badge: "Más Vendido",
-    tags: ["Sin Azúcar", "Alto en Fibra"],
-    category: "panes",
+    name: "Barra de Ahuyama",
+    description: "Textura suave y base firme. Contiene avena, queso y ahuyama. Su sabor es cremoso y dulce, se destacan notas frutales, su olor es otoñal y cálido.",
+    price: 12500,
+    image: barraAhuyama,
+    tags: ["Stevia", "Sin Azúcar"],
   },
   {
     id: 2,
-    name: "Pan Multigrano",
-    description: "Mezcla de semillas y granos enteros para máxima nutrición",
-    price: 75,
-    image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80",
-    tags: ["Alto en Fibra", "Proteína"],
-    category: "panes",
+    name: "Barra de Zanahoria",
+    description: "Es de costra firme y textura compacta, contiene avena, pasas y zanahoria. Su sabor es suave, frutal y ligeramente cítrico. Su aroma es fresco y dulce.",
+    price: 12500,
+    image: barraZanahoria,
+    tags: ["Stevia", "Sin Azúcar"],
   },
   {
     id: 3,
-    name: "Baguette Artesanal",
-    description: "Baguette crujiente con masa madre y fermentación lenta",
-    price: 55,
-    image: "https://images.unsplash.com/photo-1568471173242-461f0a730452?w=600&q=80",
-    tags: ["Fermentación Lenta"],
-    category: "panes",
+    name: "Barra con Cobertura de Frutas",
+    description: "Es una presentación de obsequio, tiene una cobertura rústica de crema suave y ligera, con notas dulces, cítricas y una tinta natural de frutas rojas.",
+    price: 22000,
+    image: barraFrutas,
+    badge: "Obsequio",
+    tags: ["Cobertura Natural", "Frutas Rojas"],
   },
   {
     id: 4,
-    name: "Pan de Centeno",
-    description: "Pan denso y nutritivo con harina de centeno 100% integral",
-    price: 80,
-    image: "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=600&q=80",
-    tags: ["Sin Gluten Opcional", "Alto en Fibra"],
-    category: "panes",
+    name: "Barra con Cobertura de Chocolate",
+    description: "Es una presentación fina, con cobertura de chocolate semiamargo y nueces.",
+    price: 24000,
+    image: barraChocolate,
+    badge: "Premium",
+    tags: ["Chocolate Semiamargo", "Nueces"],
   },
   {
     id: 5,
-    name: "Galletas de Almendra",
-    description: "Crujientes galletas con almendras y miel de abeja pura",
-    price: 65,
-    image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&q=80",
-    badge: "Nuevo",
-    tags: ["Sin Gluten", "Vegano"],
-    category: "galletas",
+    name: "Barra Grande con Cobertura de Frutas",
+    description: "12 Porciones $56.000 • 25 Porciones $98.000",
+    price: 56000,
+    image: barraGrandeFrutas,
+    badge: "Para Compartir",
+    tags: ["12 o 25 Porciones", "Frutas Rojas"],
   },
   {
     id: 6,
-    name: "Galletas de Avena y Pasas",
-    description: "Galletas suaves con avena integral y pasas orgánicas",
-    price: 55,
-    image: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=600&q=80",
-    tags: ["Alto en Fibra", "Sin Azúcar"],
-    category: "galletas",
+    name: "Barra Grande con Cobertura de Chocolate",
+    description: "12 Porciones $56.000 • 25 Porciones $98.000",
+    price: 56000,
+    image: barraGrandeChocolate,
+    badge: "Para Compartir",
+    tags: ["12 o 25 Porciones", "Chocolate"],
   },
+];
+
+const tortasGourmet = [
   {
     id: 7,
-    name: "Galletas de Coco",
-    description: "Galletas tropicales con coco rallado y aceite de coco",
-    price: 60,
-    image: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?w=600&q=80",
-    tags: ["Vegano", "Sin Lactosa"],
-    category: "galletas",
+    name: "Vainilla Tropic",
+    description: "Textura sedosa, con capa húmeda de manjar cremoso y frutas tropicales. Cobertura suave y natural con nueces.",
+    price: 64000,
+    image: tortaVainillaTropic,
+    badge: "Gourmet",
+    tags: ["8 porc. $64.000", "12 porc. $90.000"],
   },
   {
     id: 8,
-    name: "Brownie de Cacao Puro",
-    description: "Brownie denso y húmedo con cacao orgánico y nueces",
-    price: 55,
-    image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&q=80",
-    tags: ["Sin Lactosa", "Bajo en Calorías"],
-    category: "postres",
+    name: "Suavecita de Chocolate",
+    description: "Textura exquisita, fusión de chocolate y relleno jugoso, cobertura semiamarga y nueces.",
+    price: 60000,
+    image: tortaSuavecitaChocolate,
+    badge: "Gourmet",
+    tags: ["8 porc. $60.000", "12 porc. $90.000"],
   },
+];
+
+const edicionesEspeciales = [
   {
     id: 9,
-    name: "Cheesecake de Frutos Rojos",
-    description: "Cheesecake cremoso con base de nueces y frutos rojos frescos",
-    price: 120,
-    image: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=600&q=80",
-    badge: "Premium",
-    tags: ["Sin Azúcar", "Alto en Proteína"],
-    category: "postres",
+    name: "Suavecita de Navidad",
+    description: "Edición especial navideña de nuestra Suavecita de Chocolate con decoración festiva.",
+    price: 102000,
+    image: suavecitaNavidad,
+    badge: "Navidad",
+    tags: ["12 Porciones", "Edición Limitada"],
   },
   {
     id: 10,
-    name: "Muffins de Zanahoria",
-    description: "Esponjosos muffins con zanahoria rallada y especias",
-    price: 45,
-    image: "https://images.unsplash.com/photo-1607958996333-41aef7caefaa?w=600&q=80",
-    tags: ["Alto en Fibra", "Sin Azúcar"],
-    category: "postres",
-  },
-  {
-    id: 11,
-    name: "Pastel de Chocolate",
-    description: "Pastel de chocolate negro con ganache de cacao puro",
-    price: 350,
-    image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&q=80",
-    badge: "Especial",
-    tags: ["Sin Azúcar", "Para Compartir"],
-    category: "pasteles",
-  },
-  {
-    id: 12,
-    name: "Pastel de Zanahoria",
-    description: "Pastel húmedo de zanahoria con frosting de queso crema bajo en azúcar",
-    price: 380,
-    image: "https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=600&q=80",
-    tags: ["Bajo en Azúcar", "Para Compartir"],
-    category: "pasteles",
+    name: "Vainilla Tropic Navidad",
+    description: "Edición especial navideña de nuestra Vainilla Tropic con decoración festiva.",
+    price: 102000,
+    image: vainillaTropicNavidad,
+    badge: "Navidad",
+    tags: ["12 Porciones", "Edición Limitada"],
   },
 ];
 
 const Products = () => {
-  const [activeCategory, setActiveCategory] = useState("all");
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 },
+    },
+  };
 
-  const filteredProducts =
-    activeCategory === "all"
-      ? allProducts
-      : allProducts.filter((p) => p.category === activeCategory);
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
 
   return (
     <Layout>
@@ -160,59 +150,119 @@ const Products = () => {
         </div>
       </section>
 
-      {/* Products Section */}
+      {/* BARRAS SALUDABLES */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          {/* Category Filters */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="flex flex-wrap justify-center gap-3 mb-12"
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
           >
-            {categories.map((category) => (
-              <Button
-                key={category.id}
-                variant={activeCategory === category.id ? "default" : "outline"}
-                onClick={() => setActiveCategory(category.id)}
-                className="rounded-full px-6"
-              >
-                {category.name}
-              </Button>
-            ))}
+            <span className="text-accent font-medium tracking-wide uppercase text-sm">
+              Horneado Lento
+            </span>
+            <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mt-3 mb-4">
+              Barras Saludables
+            </h2>
+            <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
+              Nuestras barras son de horneado lento, están repletas de ingredientes naturales y nutritivos. 
+              Sin azúcar, con un sabor increíble y la versatilidad perfecta para cualquier momento.
+            </p>
+            <p className="text-accent font-medium mt-4">
+              Ingredientes estrella: Zanahoria, Ahuyama, Avena, Stevia, Yogurt griego, Quesos altos en proteína.
+            </p>
+            <p className="text-muted-foreground text-sm mt-2 italic">
+              Disponibles todos los viernes.
+            </p>
           </motion.div>
 
-          {/* Products Grid */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeCategory}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8"
-            >
-              {filteredProducts.map((product, index) => (
-                <motion.div
-                  key={product.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                >
-                  <ProductCard product={product} />
-                </motion.div>
-              ))}
-            </motion.div>
-          </AnimatePresence>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          >
+            {barrasSaludables.map((product) => (
+              <motion.div key={product.id} variants={itemVariants}>
+                <ProductCard product={product} />
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
-          {/* Empty State */}
-          {filteredProducts.length === 0 && (
-            <div className="text-center py-16">
-              <p className="text-muted-foreground text-lg">
-                No hay productos en esta categoría.
-              </p>
-            </div>
-          )}
+      {/* TORTAS GOURMET */}
+      <section className="py-16 section-gradient">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <span className="text-accent font-medium tracking-wide uppercase text-sm">
+              Dedicación Exclusiva
+            </span>
+            <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mt-3 mb-4">
+              Tortas Gourmet
+            </h2>
+            <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
+              Son tortas artesanales que se elaboran con dedicación exclusiva, ingredientes frescos y seleccionados. 
+              Son un equilibrio perfecto entre salud y placer decadente.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto"
+          >
+            {tortasGourmet.map((product) => (
+              <motion.div key={product.id} variants={itemVariants}>
+                <ProductCard product={product} />
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* EDICIONES ESPECIALES */}
+      <section className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <span className="text-accent font-medium tracking-wide uppercase text-sm">
+              Disponibilidad Limitada
+            </span>
+            <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mt-3 mb-4">
+              Ediciones Especiales
+            </h2>
+            <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
+              Ocasiones únicas merecen sabores inolvidables. Disponibilidad limitada.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto"
+          >
+            {edicionesEspeciales.map((product) => (
+              <motion.div key={product.id} variants={itemVariants}>
+                <ProductCard product={product} />
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
@@ -234,7 +284,7 @@ const Products = () => {
             </div>
             <div>
               <div className="text-3xl mb-2">💚</div>
-              <p className="font-medium text-secondary-foreground">Opciones Veganas</p>
+              <p className="font-medium text-secondary-foreground">Sin Azúcar Refinada</p>
             </div>
           </div>
         </div>
