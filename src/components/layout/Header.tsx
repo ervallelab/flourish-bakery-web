@@ -6,10 +6,11 @@ import { Button } from "@/components/ui/button";
 import logoAvellanas from "@/assets/logo-avellanas.jpeg";
 
 const navLinks = [
-  { name: "Inicio", path: "/" },
-  { name: "Productos", path: "/productos" },
-  { name: "Nosotros", path: "/nosotros" },
-  { name: "Contacto", path: "/contacto" },
+  { name: "Inicio", path: "/", external: false },
+  { name: "Productos", path: "/productos", external: false },
+  { name: "Nosotros", path: "/nosotros", external: false },
+  { name: "Blog", path: "https://avellanasaldia.blogspot.com/", external: true },
+  { name: "Contacto", path: "/contacto", external: false },
 ];
 
 const Header = () => {
@@ -37,23 +38,35 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`relative font-medium transition-colors duration-300 ${
-                  location.pathname === link.path
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {link.name}
-                {location.pathname === link.path && (
-                  <motion.div
-                    layoutId="activeNav"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
-                  />
-                )}
-              </Link>
+              link.external ? (
+                <a
+                  key={link.path}
+                  href={link.path}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative font-medium transition-colors duration-300 text-muted-foreground hover:text-foreground"
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`relative font-medium transition-colors duration-300 ${
+                    location.pathname === link.path
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {link.name}
+                  {location.pathname === link.path && (
+                    <motion.div
+                      layoutId="activeNav"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
+                    />
+                  )}
+                </Link>
+              )
             ))}
           </nav>
 
@@ -86,18 +99,31 @@ const Header = () => {
           >
             <nav className="container mx-auto px-4 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  onClick={() => setIsOpen(false)}
-                  className={`text-lg font-medium py-2 transition-colors ${
-                    location.pathname === link.path
-                      ? "text-primary"
-                      : "text-muted-foreground"
-                  }`}
-                >
-                  {link.name}
-                </Link>
+                link.external ? (
+                  <a
+                    key={link.path}
+                    href={link.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsOpen(false)}
+                    className="text-lg font-medium py-2 transition-colors text-muted-foreground"
+                  >
+                    {link.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    onClick={() => setIsOpen(false)}
+                    className={`text-lg font-medium py-2 transition-colors ${
+                      location.pathname === link.path
+                        ? "text-primary"
+                        : "text-muted-foreground"
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                )
               ))}
               <Button asChild className="rounded-full mt-4">
                 <Link to="/contacto" onClick={() => setIsOpen(false)}>
