@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import { Check, Heart, Leaf, Award, Users } from "lucide-react";
+import aboutSuavecita from "@/assets/about-suavecita.jpeg";
+import aboutBarras from "@/assets/about-barras.jfif";
+import aboutVainilla from "@/assets/about-vainilla.jpeg";
 
 const values = [
   {
@@ -26,11 +29,9 @@ const values = [
 ];
 
 const milestones = [
-  { year: "2019", title: "El Comienzo", description: "Avellana's nace de un sueño familiar de crear panadería saludable." },
-  { year: "2020", title: "Crecimiento", description: "Expandimos nuestro menú con galletas y postres sin azúcar." },
-  { year: "2021", title: "Reconocimiento", description: "Ganamos el premio a mejor panadería saludable de la ciudad." },
-  { year: "2022", title: "Innovación", description: "Lanzamos nuestra línea de productos sin gluten." },
-  { year: "2023", title: "Comunidad", description: "Alcanzamos más de 1,000 clientes frecuentes satisfechos." },
+  { year: "2023", title: "Comienzo", description: "Avellana's nace de la búsqueda y el gusto de su fundadora, por la repostería saludable." },
+  { year: "2024", title: "Innovación", description: "Lanzamos nuestras barras saludables." },
+  { year: "2025", title: "Más Innovación", description: "Presentamos la línea de tortas gourmet." },
 ];
 
 const About = () => {
@@ -58,7 +59,7 @@ const About = () => {
               <span className="text-gradient"> Propósito</span>
             </h1>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Somos una panadería artesanal dedicada a crear productos deliciosos 
+              Somos una opción artesanal dedicada a crear productos deliciosos 
               que nutren tu cuerpo sin sacrificar el sabor.
             </p>
           </motion.div>
@@ -127,32 +128,25 @@ const About = () => {
                 <div className="space-y-4">
                   <div className="rounded-2xl overflow-hidden shadow-medium">
                     <img
-                      src="https://images.unsplash.com/photo-1556471013-0001958d2f12?w=500&q=80"
-                      alt="Preparación artesanal"
+                      src={aboutSuavecita}
+                      alt="Suavecita de Chocolate"
                       className="w-full h-48 object-cover"
                     />
                   </div>
                   <div className="rounded-2xl overflow-hidden shadow-medium">
                     <img
-                      src="https://images.unsplash.com/photo-1517433670267-30f41c281a91?w=500&q=80"
-                      alt="Productos horneados"
+                      src={aboutBarras}
+                      alt="Barras Saludables"
                       className="w-full h-64 object-cover"
                     />
                   </div>
                 </div>
-                <div className="pt-8 space-y-4">
+                <div className="pt-8">
                   <div className="rounded-2xl overflow-hidden shadow-medium">
                     <img
-                      src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=500&q=80"
-                      alt="Ingredientes naturales"
-                      className="w-full h-64 object-cover"
-                    />
-                  </div>
-                  <div className="rounded-2xl overflow-hidden shadow-medium">
-                    <img
-                      src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=500&q=80"
-                      alt="Panadería"
-                      className="w-full h-48 object-cover"
+                      src={aboutVainilla}
+                      alt="Vainilla Tropic"
+                      className="w-full h-80 object-cover"
                     />
                   </div>
                 </div>
