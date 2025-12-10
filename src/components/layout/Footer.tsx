@@ -70,7 +70,7 @@ const Footer = () => {
           <div>
             <h4 className="font-serif text-lg font-semibold mb-6">Productos</h4>
             <ul className="space-y-3">
-              {["Barras Artesanales", "Galletas Saludables", "Pasteles", "Postres Sin Azúcar"].map(
+              {["Barras Artesanales", "Tortas Gourmet", "Ediciones Limitadas"].map(
                 (item) => (
                   <li key={item}>
                     <Link
