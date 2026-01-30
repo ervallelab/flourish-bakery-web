@@ -9,6 +9,7 @@ import barraChocolate from "@/assets/barra-chocolate.jfif";
 import barraFrutas from "@/assets/barra-frutas.jfif";
 import barraGrandeChocolate from "@/assets/barra-grande-chocolate.jfif";
 import barraGrandeFrutas from "@/assets/barra-grande-frutas.jfif";
+import paqueteBarras from "@/assets/paquete-barras.jfif";
 import tortaSuavecitaChocolate from "@/assets/torta-suavecita-chocolate.jfif";
 import tortaVainillaTropic from "@/assets/torta-vainilla-tropic.jpeg";
 import suavecitaNavidad from "@/assets/suavecita-navidad.jpeg";
@@ -19,7 +20,7 @@ const barrasSaludables = [
     id: 1,
     name: "Barra de Ahuyama",
     description: "Textura suave y base firme. Contiene avena, queso y ahuyama. Su sabor es cremoso y dulce, se destacan notas frutales, su olor es otoñal y cálido.",
-    price: 12500,
+    price: 14000,
     image: barraAhuyama,
     tags: ["Stevia", "Sin Azúcar"],
   },
@@ -27,9 +28,18 @@ const barrasSaludables = [
     id: 2,
     name: "Barra de Zanahoria",
     description: "Es de costra firme y textura compacta, contiene avena, pasas y zanahoria. Su sabor es suave, frutal y ligeramente cítrico. Su aroma es fresco y dulce.",
-    price: 12500,
+    price: 14000,
     image: barraZanahoria,
     tags: ["Stevia", "Sin Azúcar"],
+  },
+  {
+    id: 11,
+    name: "Paquete Barras",
+    description: "10 unidades de 50 gramos. Perfecto para compartir o disfrutar durante la semana.",
+    price: 20000,
+    image: paqueteBarras,
+    badge: "Pack",
+    tags: ["10 Unidades", "50g c/u"],
   },
   {
     id: 3,
