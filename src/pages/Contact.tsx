@@ -6,32 +6,29 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { MapPin, Phone, Mail, Clock, Send, Instagram, Facebook } from "lucide-react";
+import { MapPin, Phone, Clock, Send, Instagram, MessageCircle } from "lucide-react";
 
 const contactInfo = [
   {
     icon: MapPin,
     title: "Ubicación",
-    content: "Col. Roma Norte, Ciudad de México",
-    detail: "CDMX, México",
+    content: "Buga, Valle del Cauca",
+    detail: "Colombia",
+    link: "https://maps.google.com/?q=Buga,Valle+del+Cauca,Colombia",
   },
   {
     icon: Phone,
     title: "Teléfono",
-    content: "+52 55 1234 5678",
-    detail: "WhatsApp disponible",
-  },
-  {
-    icon: Mail,
-    title: "Email",
-    content: "hola@avellanas.com",
-    detail: "Respondemos en 24h",
+    content: "300 618 0880",
+    detail: "Llámanos",
+    link: "tel:+573006180880",
   },
   {
     icon: Clock,
     title: "Horario",
-    content: "Lun - Sáb: 8:00 - 19:00",
-    detail: "Dom: 9:00 - 14:00",
+    content: "Lun - Sáb: 9:00 a.m. - 6:00 p.m.",
+    detail: "Dom: 9:00 a.m. - 1:00 p.m.",
+    link: null,
   },
 ];
 
@@ -216,62 +213,91 @@ const Contact = () => {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {contactInfo.map((info, index) => (
-                  <motion.div
-                    key={info.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="bg-card rounded-xl p-6 shadow-soft group hover:shadow-medium transition-shadow"
-                  >
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                      <info.icon className="w-6 h-6 text-primary" />
-                    </div>
-                    <h3 className="font-semibold text-card-foreground mb-1">{info.title}</h3>
-                    <p className="text-foreground font-medium">{info.content}</p>
-                    <p className="text-sm text-muted-foreground">{info.detail}</p>
-                  </motion.div>
-                ))}
+                {contactInfo.map((info, index) => {
+                  const CardContent = (
+                    <>
+                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                        <info.icon className="w-6 h-6 text-primary" />
+                      </div>
+                      <h3 className="font-semibold text-card-foreground mb-1">{info.title}</h3>
+                      <p className="text-foreground font-medium">{info.content}</p>
+                      <p className="text-sm text-muted-foreground">{info.detail}</p>
+                    </>
+                  );
+
+                  return (
+                    <motion.div
+                      key={info.title}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      {info.link ? (
+                        <a
+                          href={info.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block bg-card rounded-xl p-6 shadow-soft group hover:shadow-medium transition-shadow"
+                        >
+                          {CardContent}
+                        </a>
+                      ) : (
+                        <div className="bg-card rounded-xl p-6 shadow-soft group hover:shadow-medium transition-shadow">
+                          {CardContent}
+                        </div>
+                      )}
+                    </motion.div>
+                  );
+                })}
               </div>
 
               {/* Social Links */}
               <div className="bg-secondary rounded-xl p-6">
                 <h3 className="font-semibold text-secondary-foreground mb-4">
-                  Síguenos en Redes Sociales
+                  Contáctanos Directamente
                 </h3>
                 <div className="flex gap-4">
                   <a
-                    href="#"
-                    className="w-12 h-12 rounded-full bg-background flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
+                    href="https://wa.me/573006180880"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 rounded-full bg-background flex items-center justify-center hover:bg-green-500 hover:text-white transition-colors"
+                    aria-label="WhatsApp"
+                  >
+                    <MessageCircle className="w-5 h-5" />
+                  </a>
+                  <a
+                    href="https://instagram.com/avellanas.barras"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 rounded-full bg-background flex items-center justify-center hover:bg-pink-500 hover:text-white transition-colors"
                     aria-label="Instagram"
                   >
                     <Instagram className="w-5 h-5" />
-                  </a>
-                  <a
-                    href="#"
-                    className="w-12 h-12 rounded-full bg-background flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
-                    aria-label="Facebook"
-                  >
-                    <Facebook className="w-5 h-5" />
                   </a>
                 </div>
               </div>
 
               {/* Map Placeholder */}
-              <div className="bg-card rounded-xl overflow-hidden shadow-soft">
+              <a 
+                href="https://maps.google.com/?q=Buga,Valle+del+Cauca,Colombia"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-card rounded-xl overflow-hidden shadow-soft hover:shadow-medium transition-shadow"
+              >
                 <div className="aspect-video bg-muted flex items-center justify-center">
                   <div className="text-center p-8">
                     <MapPin className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
                     <p className="text-muted-foreground">
-                      Col. Roma Norte, Ciudad de México
+                      Buga, Valle del Cauca
                     </p>
                     <p className="text-sm text-muted-foreground mt-2">
-                      A 5 min del Metro Insurgentes
+                      Colombia
                     </p>
                   </div>
                 </div>
-              </div>
+              </a>
             </motion.div>
           </div>
         </div>
